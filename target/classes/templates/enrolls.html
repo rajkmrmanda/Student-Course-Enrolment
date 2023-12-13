@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Enrollments 
+			</h2>
+			<p><span style="color: red; margin: 30px;" th:text="${msg}"></span></p>
+			
+				<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Enrollment Id</th>
+							<th>Sche Id</th>
+							<th>Stud Id</th>
+							<th>Professor</th>
+							<th>room No</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Course</th>
+<!--							<th>Delete</th>
+-->						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.enrollId}"></td>
+							<td th:text="${data.scheId}"></td>
+							<td th:text="${data.studId}"></td>
+							<td th:text="${data.firstName}"></td>
+							<td th:text="${data.roomNo}"></td>
+							<td th:text="${data.date}"></td>
+							<td th:text="${data.time}"></td>
+							<td th:text="${data.course}"></td>
+							<!--<td width="70px">
+								<form action="/sche/enroll/delete">
+									<input type="hidden" name="id" th:value="${data.id}" />
+										<input type="submit" class="btn btn-danger btn-submit"
+											value="Delete"  />
+								</form>
+							</td>-->
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

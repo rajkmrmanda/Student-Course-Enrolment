@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+<title>Rooms List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Class Rooms 
+				&nbsp; &nbsp; &nbsp; &nbsp; 
+				<a href="/room/create" class="btn btn-warning"><span
+					class="glyphicon glyphicon-plus-sign"></span> Add New </a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Room Id</th>
+							<th>Room No</th>
+							<th>Capacity</th>
+							<th>Status</th>
+							<th>Edit</th>
+<!--							<th>Delete</th>
+-->						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.roomId}"></td>
+							<td th:text="${data.roomNo}"></td>
+							<td th:text="${data.capacity}"></td>
+							<td th:text="${data.status}"></td>
+							<td width="70px"><a th:href="@{'/room/edit/' + ${data.id}}"
+								class="btn btn-warning btn-submit">Edit</a></td>
+							<!--<td  width="70px">
+								<form action="/room/delete">
+									<input type="hidden" name="id" th:value="${data.id}" />
+										<input type="submit" class="btn btn-danger btn-submit"
+											value="Delete"  />
+								</form>
+							</td>-->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+		
+
+			<form th:action="@{/book/check}" method="post">
+				<table class="tbl-form" width="500px">
+					<tr>
+						<td>Date :</td>
+						<td><input type="date" class="form-control" name="date"
+							th:value="${date}" /></td>
+						<td>
+							<button type="submit" class="btn btn-danger btn-submit">Get
+								Rooms</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<br>
+			<br>
+			<br>
+			<div class="table-responsive">
+				<table class="table table-striped page-details" style="width:800px;margin:auto;text-align:center">
+					<thead class="table-dark">
+						<tr>
+							<th>Room No</th>
+							<th>Room Capacity</th>
+							<th>Book Now</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.roomNo}"></td>
+							<td th:text="${data.capacity}"></td>
+							<td  width="70px">
+								<form action="/book/save">
+									<input type="hidden" name="roomNo" th:value="${data.roomNo}" />
+									<input type="hidden" name="date" th:value="${date}" />
+										<input type="submit" class="btn btn-success btn-submit"
+											value="Book Now" />
+								</form>
+							</td> 
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

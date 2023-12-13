@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Schedules 
+			</h2>
+			<p><span style="color: red; margin: 30px;" th:text="${msg}"></span></p>
+			
+				<form th:if="${session.usertype == 'admin' }" th:action="@{/sche/save}" th:object="${schedule}">
+				<table class="tbl-form">
+					<tr>
+						<td>Slot</td>
+						<td>
+							<select  class="form-control" name="slotId" >
+								<option th:each="data : ${slotlist}"  th:value="${data.slotId}" th:text="${data.firstName +' '+data.day+' '+data.time}">
+								</option>
+							</select>
+
+						</td>
+						<td width="100px"></td>
+						<td>Date</td>
+						<td><input type="date" class="form-control" name="scheDate" /></td>
+						<td width="100px"></td>
+						<td>
+						<button type="submit" class="btn btn-success btn-submit">Save</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+			
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Sche Id</th>
+							<th>Sche Date</th>
+							<th>Slot Id</th>
+							<th>Day</th>
+							<th>Time</th>
+							<th>Prof</th>
+							<th>Course</th>
+							<th>room No</th>
+							<th>Avl Seats</th>
+<!--							<th th:if="${session.usertype == 'admin' }" >Delete</th>
+-->							<th th:if="${session.usertype == 'student' }" >Enroll</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.scheId}"></td>
+							<td th:text="${data.scheDate}"></td>
+							<td th:text="${data.slotId}"></td>
+							<td th:text="${data.day}"></td>
+							<td th:text="${data.time}"></td>
+							<td th:text="${data.firstName}"></td>
+							<td th:text="${data.course}"></td>
+							<td th:text="${data.roomNo}"></td>
+							<td th:text="${data.avlSeats}"></td>
+							<!--<td th:if="${session.usertype == 'admin' }"   width="70px">
+								<form action="/sche/delete">
+									<input type="hidden" name="id" th:value="${data.id}" />
+										<input type="submit" class="btn btn-danger btn-submit"
+											value="Delete"  />
+								</form>
+							</td>-->
+							<td th:if="${session.usertype == 'student' }"   width="70px">
+								<form action="/sche/enroll">
+									<input type="hidden" name="id" th:value="${data.id}" />
+										<input type="submit" class="btn btn-danger btn-submit"
+											value="Enroll"  />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/5.1.3/css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+	
+
+	<div class="container-fluid content-page"
+		style=" height: 650px;">
+		<br><br><br><br>
+		<div class="container starter-template"
+			style="background-color: rgba(200, 241, 240, 0.7); height: 370px; padding-top:50px;">
+			<div class="row page-create">
+
+				<div class="content">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<img src="/img/cust.jpeg" alt="Image"
+									 height="240px" width="300px">
+							</div>
+							<div class="col-md-6">
+								<h2>
+								 Student Login
+								</h2>
+								<form th:action="@{/student/login}" th:object="${login}"
+									method="POST">
+									<span style="color: red; margin: 30px;" th:text="${msg}"></span>
+
+									<table class="tbl-form">
+										<tr>
+											<td>Email</td>
+											<td><input type="text" class="form-control" name="email" /></td>
+										</tr>
+										<tr>
+											<td>Password</td>
+											<td><input type="password" class="form-control"
+												name="password" /></td>
+										</tr>
+									</table>
+									<br>
+									<button type="submit" class="btn btn-success btn-submit">Login</button>
+									<a href="/student/create" class="btn btn-danger btn-submit">
+										SignUp </a>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.container -->
+
+	<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

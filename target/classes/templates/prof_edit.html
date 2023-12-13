@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>My Profile </title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				My Profile
+			</h2>
+			<form th:action="@{/professor/update}" th:object="${professor}">
+				<table class="tbl-form">
+					<tr>
+						<td> Professor ID</td>
+						<td><input readonly type="text" class="form-control" name="profId" th:value="${obj.profId}" />
+						</td>
+					</tr>
+					<tr>
+						<td> First Name</td>
+						<td><input type="text" class="form-control" name="firstName" th:value="${obj.firstName}" /></td>
+					</tr>
+					<tr>
+						<td> Last Name</td>
+						<td><input type="text" class="form-control" name="lastName" th:value="${obj.lastName}" /></td>
+					</tr>
+					<tr>
+						<td>Phone</td>
+						<td><input type="text" class="form-control" name="phone" th:value="${obj.phone}" /></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input type="text" class="form-control" name="email" th:value="${obj.email}" /></td>
+					</tr>
+					<tr>
+						<td>Address</td>
+						<td><textarea class="form-control" name="address" th:text="${obj.address}" ></textarea></td>
+					</tr>
+					
+					<tr>
+						<td>Password</td>
+						<td><input type="password" class="form-control" name="password"  th:value="${obj.password}" /></td>
+					</tr>
+				</table>
+
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

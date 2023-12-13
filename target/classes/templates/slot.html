@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Time Slots 
+				&nbsp; &nbsp; &nbsp; &nbsp; 
+				<a href="/slot/create" class="btn btn-warning"> Add New </a>
+			</h2>
+			<p><span style="color: red; margin: 30px;" th:text="${msg}"></span></p>
+			
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Slot Id</th>
+							<th>Prof Id</th>
+							<th>First Name</th>
+							<th>Day</th>
+							<th>Time</th>
+							<th>Edit</th>
+<!--							<th>Delete</th>
+-->						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.slotId}"></td>
+							<td th:text="${data.profId}"></td>
+							<td th:text="${data.firstName}"></td>
+							<td th:text="${data.day}"></td>
+							<td th:text="${data.time}"></td>
+							<td width="70px"><a th:href="@{'/slot/edit/' + ${data.id}}"
+								class="btn btn-warning btn-submit">Edit</a></td>
+							<!--<td  width="70px">
+								<form action="/slot/delete">
+									<input type="hidden" name="id" th:value="${data.id}" />
+										<input type="submit" class="btn btn-danger btn-submit"
+											value="Delete"  />
+								</form>
+							</td>-->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

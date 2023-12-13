@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-view">
+		<div class="row">
+
+			<h2>Professor Details</h2>
+
+			<table class="tbl-show table  table-warning " style="width: 600px">
+				<tr>
+					<td>ID</td>
+					<td th:text="${obj.profId}"></td>
+				</tr>
+				<tr>
+					<td>First Name</td>
+					<td th:text="${obj.firstName}"></td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td th:text="${obj.lastName}"></td>
+				</tr>
+				<tr>
+					<td>Phone</td>
+					<td th:text="${obj.phone}"></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td th:text="${obj.email}"></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td th:text="${obj.address}"></td>
+				</tr>
+				<tr>
+					<td>Course</td>
+					<td th:text="${obj.course}"></td>
+				</tr>
+				<!--<tr>
+					<td colspan="2" style="text-align:center">
+						<form action="/professor/delete">
+							
+								 <input
+								type="hidden" name="id" th:value="${obj.id}" />
+								<input type="submit" class="btn btn-danger btn-submit"
+									value="Delete" />
+
+						</form>
+					</td>
+				</tr>-->
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+	<div class="row">
+				<h2>
+					Add Professor
+					
+				</h2 >
+
+				<form th:action="@{/professor/save}" th:object="${professor}">
+					<table class="tbl-form">
+						<tr>
+							<td>First Name</td>
+							<td><input type="text" class="form-control" name="firstName" required /></td>
+						</tr>
+						<tr>
+							<td>Last Name</td>
+							<td><input type="text" class="form-control" name="lastName" required /></td>
+						</tr>
+						<tr>
+							<td>Phone</td>
+							<td><input type="text" class="form-control" name="phone" /></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td><input type="text" class="form-control" name="email" required /></td>
+						</tr>
+						<tr>
+							<td>Address</td>
+							<td><textarea class="form-control" name="address" ></textarea></td>
+						</tr>
+						<tr>
+						<td>Course</td>
+						<td>
+							<select  class="form-control" name="course" >
+								<option th:each="data : ${courses}"  th:value="${data.course}" th:text="${data.course}">
+								</option>
+							</select>
+
+						</td>
+					</tr>
+						
+					</table>
+					<button type="submit" class="btn btn-success btn-submit">Add New</button>
+					
+				</form>
+	</div>
+	</div>
+</body>
+
+</html>

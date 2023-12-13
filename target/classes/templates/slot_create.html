@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New Time Slot
+				
+			</h2>
+
+			<form th:action="@{/slot/save}" th:object="${slot}">
+				<table class="tbl-form">
+					<tr>
+						<td>Professor</td>
+						<td>
+							<select  class="form-control" name="profId" >
+								<option th:each="data : ${datalist}"  th:value="${data.profId}" th:text="${data.firstName +' '+data.lastName}">
+								</option>
+							</select>
+
+						</td>
+					</tr>
+					<tr>
+						<td>Day</td>
+						<td>
+							<select class="form-control" name="day" >
+								<option>Sunday</option>
+								<option>Monday</option>
+								<option>Tuesday</option>
+								<option>Wednesday</option>
+								<option>Thursday</option>
+								<option>Friday</option>
+								<option>Saturday</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Time</td>
+						<td><input type="time" class="form-control" name="time" /></td>
+					</tr>
+					
+				</table>
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
+
+

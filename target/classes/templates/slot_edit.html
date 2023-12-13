@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-edit">
+		<div class="row">
+			<h2>
+				Edit Time Slot 
+				
+			</h2>
+			<form th:action="@{/slot/update}" th:object="${slot}">
+				<table class="tbl-form">
+				<tr>
+						<td>Slot Id</td>
+						<td><input readonly type="text" class="form-control" name="slotId" th:value="${obj.slotId}" /></td>
+					</tr>
+					
+					<tr>
+						<td>Professor</td>
+						<td>
+							<select  class="form-control" name="profId" >
+								<option th:each="data : ${datalist}"  th:value="${data.profId}" th:text="${data.firstName +' '+data.lastName}" th:selected="${data.profId == obj.profId}">
+								</option>
+							</select>
+
+						</td>
+					</tr>
+					<tr>
+						<td>Day</td>
+						<td>
+							<select class="form-control" name="day" th:selected="${obj.day}">
+								<option  th:text="${obj.day}" ></option>
+								<option>Sunday</option>
+								<option>Monday</option>
+								<option>Tuesday</option>
+								<option>Wednesday</option>
+								<option>Thursday</option>
+								<option>Friday</option>
+								<option>Saturday</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Time</td>
+						<td><input type="time" class="form-control" name="time" th:value="${obj.time}" /></td>
+					</tr>
+					
+				</table>
+
+				<input type="hidden" name="id" th:value="${obj.id}" />
+				<button type="submit" class="btn btn-success btn-submit">Update</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

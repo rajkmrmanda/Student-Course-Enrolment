@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Courses 
+				&nbsp; &nbsp; &nbsp; &nbsp; 
+				<a th:if="${session.usertype == 'admin'}" href="/course/create" class="btn btn-warning">Add New </a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Course Id</th>
+							<th>Course</th>
+							<th>RoomNo</th>
+							<th>Description</th>
+							<th th:if="${session.usertype == 'admin'}">Edit</th>
+<!--							<th th:if="${session.usertype == 'admin'}">Delete</th>
+-->						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.courseId}"></td>
+							<td th:text="${data.course}"></td>
+							<td th:text="${data.roomNo}"></td>
+							<td th:text="${data.description}"></td>
+							<td th:if="${session.usertype == 'admin'}" width="70px"><a th:href="@{'/course/edit/' + ${data.id}}"
+								class="btn btn-warning btn-submit">Edit</a></td>
+							<!--<td th:if="${session.usertype == 'admin'}" width="70px">
+								<form action="/course/delete">
+									<input type="hidden" name="id" th:value="${data.id}" />
+										<input type="submit" class="btn btn-danger btn-submit"
+											value="Delete"  />
+								</form>
+							</td>-->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
