@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="default">
+
+<head>
+<title>Booking List</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+
+		<div class="row page-list">
+
+			<h2>My Room Bookings </h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>BookingID</th>
+							<th>Room No</th>
+							<th>Date</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td th:text="${data.bookingId}"></td>
+							<td th:text="${data.roomNo}"></td>
+							<td th:text="${data.date}"></td>
+							<td th:if="${data.status != 'Pending'}" th:text="${data.status}"></td>
+							<!--<td th:if="${data.status == 'Pending'}">
+								<form action="/book/delete">
+									<input type="hidden" name="id" th:value="${data.id}" /> <input
+										type="submit" class="btn btn-danger btn-submit" value="Cancel" />
+
+								</form>
+							</td>-->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

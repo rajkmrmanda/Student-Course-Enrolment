@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+	<title>Create Room</title>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row page-create">
+		<div class="row">
+			<h2>
+				Add New Room
+				
+			</h2>
+
+			<form th:action="@{/room/save}" th:object="${room}">
+				<table class="tbl-form">
+					<tr>
+						<td>Room No</td>
+						<td><input type="text" class="form-control" name="roomNo" required/></td>
+					</tr>
+					<tr>
+						<td>Capacity</td>
+						<td><input type="text" class="form-control" name="capacity" required /></td>
+					</tr>
+					
+				</table>
+				<button type="submit" class="btn btn-success btn-submit">Save</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
+
+

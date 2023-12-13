@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="default">
+
+<head>
+</head>
+
+<body>
+	<div layout:fragment="content" class="row">
+		<div class="row page-list">
+
+			<h2>
+				Professor List 
+				&nbsp; &nbsp; &nbsp; &nbsp; 
+				<a href="/professor/create" class="btn btn-warning">Add New </a>
+			</h2>
+			<div class="table-responsive">
+				<table class="table table-striped page-details">
+					<thead class="table-dark">
+						<tr>
+							<th>Prof Id</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th>Address</th>
+							<th>Course</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${datalist}">
+							<td><a th:text="${data.profId}" th:href="@{'/professor/show/' + ${data.id}}"></a></td>
+  							<td th:text="${data.firstName}"></td>
+  							<td th:text="${data.lastName}"></td>
+  							<td th:text="${data.phone}"></td>
+							<td th:text="${data.email}"></td>
+							<td th:text="${data.address}"></td>
+							<td th:text="${data.course}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

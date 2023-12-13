@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+	
+
+	<div class="container-fluid content-page" style="background:url('../img/2.jpg'); background-size:100% 100%;height:520px;">
+		<div class="container starter-template" style="background-color: rgb(252, 241, 220);height:600px;">
+			<div class="row page-create">
+				<h2>
+					<br><br>
+					New Student Signup
+					
+				</h2 >
+
+				<form th:action="@{/student/save}" th:object="${student}">
+					<table class="tbl-form">
+						<tr>
+							<td>Name</td>
+							<td><input type="text" class="form-control" name="name" required/></td>
+						</tr>
+						<tr>
+							<td>Phone</td>
+							<td><input type="text" class="form-control" name="phone" /></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td><input type="text" class="form-control" name="email" required/></td>
+						</tr>
+						<tr>
+							<td>Gender</td>
+							<td>
+								<input type="radio" class="form-check-input" name="gender" value="male" /> Male
+								&nbsp; &nbsp; &nbsp; &nbsp;
+								<input type="radio" class="form-check-input" name="gender" value="female" /> Female
+							</td>
+						</tr>
+						<tr>
+							<td>Password</td>
+							<td><input type="password" class="form-control" name="password" required/></td>
+						</tr>
+					</table>
+					<button type="submit" class="btn btn-success btn-submit">Register</button>
+					
+				</form>
+			</div>
+		</div>
+	</div><!-- /.container -->
+
+	<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
